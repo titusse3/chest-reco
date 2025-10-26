@@ -1,4 +1,6 @@
-from item import Item, Recette
+from inv_gestion.item import Item, Recette
+
+#### lingo_or, coeur_lune
 
 # commun
 planche = Item("planche", "ressource/commun/planche.png")
@@ -149,7 +151,7 @@ recette_torse_hp_t3 = Recette(torse_hp_t3, [(ficelle, 6), (dain, 6), (lingo_cuiv
 # recette_torse_jutsu_t4 = Recette(torse_jutsu_t4, [(ficelle, 8), (eclat_lune, 2), (pierre_volcanique, 2), (parchemin_dore, 2), (lingo_acier, 8), (lingo_fer, 8)])
 recette_torse_armure_t4 = Recette(torse_armure_t4, [(dain, 8), (lingo_obsidienne, 1), (pierre_volcanique, 2), (ficelle, 8), (lingo_acier, 8)])
 
-item = [
+items = [
   planche, plume, tissue, ficelle, pomme, parchemin_basique, laine, parchemin,
   papier, laniere, cuivre_brute, sphere_bois, fer_brute, batton, acier_brute,
   aluminium, bois, magnesium, cuir, parchemin_rare, dain, lingo_acier,
@@ -160,7 +162,7 @@ item = [
   parchemin_dore, diamant, tissue_precieux
 ]
 
-equipement = [
+equipements = [
   bague_t2, bague_t4, boucle_t2, boucle_t3, boucle_t4, collier_t2, collier_t3, 
   collier_t4, bottes_t2, bottes_t4, gant_t2, gant_t4,
   patalon_hp_t3, patalon_jutsu_t4, patalon_armure_t4,

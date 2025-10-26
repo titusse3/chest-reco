@@ -106,12 +106,3 @@ class Recette:
     cv2.imshow("Recette", composite)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-
-if __name__ == "__main__":
-  item1 = Item("planche", "ressource/commun/planche.png")
-  item2 = Item("plume", "ressource/commun/plume.png")
-  result_item = Item("tissue", "ressource/commun/tissue.png")
-  
-  recette = Recette(result_item, [(item1, 2), (item2, 10)])
-  recette.display_text()
-  recette.display_image()

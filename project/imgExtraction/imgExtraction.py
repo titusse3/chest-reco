@@ -1,7 +1,5 @@
+import pytest
 import cv2
-
-from recette import *
-from numberReco import extraire_code_x_easyocr
 
 DEFAULT_TEMPLATE_MATCHING_THRESHOLD = 0.95
 
@@ -15,12 +13,13 @@ class Template:
       image_path (str): chemin de l'image template
       label (str): le label associé au template
       color (List[int]): la couleur associée au label (pour le tracé)
-      matching_threshold (float): score minimal pour considérer la détection par template matching
     """
     self.image_path = image_path
     self.label = label
     self.color = color
     self.template = cv2.imread(image_path)
+    if self.template is None:
+      raise FileNotFoundError(f"Impossible de lire l'image: {image_path}")
     self.template_height, self.template_width = self.template.shape[:2]
 
 def item_extractor(image, template):
@@ -65,20 +64,3 @@ def number_extractor(image, template):
     roi = image[y1:y2, x1:x2]
     return roi
   return None
-
-
-for i in (item + equipement):
-  v = item_extractor("coffre/21_10_25/3.jpg", i.img_path)
-  if v is None:
-    continue
-  # cv2.imshow("Original", v)
-  # cv2.waitKey(0)
-  t = number_extractor(v, "img.jpg")
-  if t is not None:
-    d = extraire_code_x_easyocr(t)
-    if d is None:
-      cv2.imshow("Extraction test", t)
-      cv2.waitKey(0)
-    else:
-      print(d)
-

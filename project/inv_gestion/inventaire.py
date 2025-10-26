@@ -1,7 +1,5 @@
 import json
 
-#### lingo_or, coeur_lune
-
 class Inventaire:
   def __init__(self, list_of_tuples = []):
     self.stock = {}
@@ -101,16 +99,3 @@ def load_inventory(filepath : str):
   inv = Inventaire(data)
   print(f"Inventaire chargé depuis {filepath}.")
   return inv
-
-# = Test =======================================================================
-
-def test_to_list_empty():
-  i = Inventaire()
-  l = i.to_list()
-  assert l == [], "L'inventaire devrait être vide"
-
-def test_to_list_nempty():
-  l = [("pomme", 4), ("carrote", 2)]
-  i = Inventaire(l)
-  assert i.to_list() == l, "Le contenue doit être le même que l'inventaire"
-
