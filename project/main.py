@@ -9,9 +9,9 @@ import math
 
 X_IMG = "ressources/x.jpg"
 
-def compare(l, l_):
-  ll = {n : i for (n, i) in l}
-  for (name, qt) in l_:
+def compare(l1, l2):
+  ll = {n : i for (n, i) in l1}
+  for (name, qt) in l2:
     if name in ll:
       ll[name] = qt
       print(f"Mise à jour de {name}: {ll[name]} -> {qt}")
@@ -20,7 +20,7 @@ def compare(l, l_):
       print(f"Ajout de {name}: {qt}")
   return [(n, i) for (n, i) in ll.items()]
 
-def get_closest_file(folder_path) -> str | None:
+def get_closest_file(folder_path : str) -> str | None:
   files = os.listdir(folder_path)
   files.sort()
   if len(files) == 0:
@@ -36,6 +36,21 @@ def img_resize(image):
   print(f"Pixels: {w*h} -> {new_w*new_h} ({scale:.3f}x linear)")
   return image
 
+def get_number_from_image(image):
+  number_img = number_extractor(image, X_IMG)
+  if number_img is not None:
+    n = number_ocr(number_img)
+    if n is None:
+      n = number_ocr(img_resize(number_img))
+    if n is None:
+      print(f"Échec de la reconnaissance du nombre pour l'image {image}.")
+      return None
+    if not n.isdigit():
+      print(f"Nombre reconnu non valide '{n}' pour l'image {image}.")
+      return None
+    return int(n)
+  return 1
+
 def main(coffre_path, logs_folder="ressources/logs"):
   old_path = get_closest_file(logs_folder)
   if old_path is None:
@@ -50,19 +65,9 @@ def main(coffre_path, logs_folder="ressources/logs"):
       result = item_extractor(os.path.join(coffre_path, img), item.img_path)
       if result is None:
         continue
-      number_img = number_extractor(result, X_IMG)
-      qt = 1
-      if number_img is not None:
-        n = number_ocr(number_img)
-        if n is None:
-          n = number_ocr(img_resize(number_img))
-        if n is None:
-          print(f"Échec de la reconnaissance du nombre pour l'image {img}.")
-        if not n.isdigit():
-          print(f"Nombre reconnu non valide '{n}' pour l'image {img}.")
-        qt = int(n)
-      img_items.append((item.name, qt))
-      print(f"Détection de {qt} x {item.name} dans l'image {img}.")
+      number = get_number_from_image(result)
+      img_items.append((item.name, number))
+      print(f"Détection de {number} x {item.name} dans l'image {img}.")
     all_items = compare(all_items, img_items)
     print(f"File {img} treated.")
 
@@ -71,4 +76,4 @@ def main(coffre_path, logs_folder="ressources/logs"):
   show_diffrence(add, remove, inv)
 
 if __name__ == "__main__":
-  main("ressources/coffre/21_10_25")
+  main("ressources/coffre/22_10_25")
