@@ -12,6 +12,8 @@ testdata = [
   (_BASE + "/test_images/1.jpg", _BASE + "/test_images/3/find.png", True),
   (_BASE + "/test_images/1.jpg", _BASE + "/test_images/4/find.png", True),
   (_BASE + "/test_images/1.jpg", _BASE + "/test_images/5/find.png", False),
+  (_BASE + "/test_images/1.jpg", _BASE + "/test_images/5/find.png", False),
+  (_BASE + "/test_images/1.jpg", _BASE + "/test_images/6/find.png", False),
 ]
 
 @pytest.mark.parametrize("img,template,expected", testdata)
@@ -25,6 +27,7 @@ test_number_extractor = [
   (_BASE + "/test_images/2/result.png"),
   (_BASE + "/test_images/3/result.png"),
   (_BASE + "/test_images/4/result.png"),
+  (_BASE + "/test_images/6/result.png"),
 ]
 
 @pytest.mark.parametrize("file", test_number_extractor)

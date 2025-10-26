@@ -1,4 +1,3 @@
-import pytest
 import cv2
 
 DEFAULT_TEMPLATE_MATCHING_THRESHOLD = 0.95
@@ -19,12 +18,12 @@ class Template:
     self.color = color
     self.template = cv2.imread(image_path)
     if self.template is None:
-      raise FileNotFoundError(f"Impossible de lire l'image: {image_path}")
+      raise FileNotFoundError(f"Impossible de lire l'image: {image_path} de {self.label}")
     self.template_height, self.template_width = self.template.shape[:2]
 
 def item_extractor(image, template):
   imageForm = cv2.imread(image)
-  template = Template(image_path=template, label="1", color=(0, 0, 255))
+  template = Template(image_path=template, label=template, color=(0, 0, 255))
   template_matching = cv2.matchTemplate(template.template, imageForm, cv2.TM_CCOEFF_NORMED)
   _, max_val, _, max_loc = cv2.minMaxLoc(template_matching)
   if max_val >= DEFAULT_TEMPLATE_MATCHING_THRESHOLD:
@@ -45,7 +44,7 @@ def item_extractor(image, template):
   return None
 
 def number_extractor(image, template):
-  template = Template(image_path=template, label="1", color=(0, 0, 255))
+  template = Template(image_path=template, label=template, color=(0, 0, 255))
   template_matching = cv2.matchTemplate(template.template, image, cv2.TM_CCOEFF_NORMED)
   _, max_val, _, max_loc = cv2.minMaxLoc(template_matching)
   if max_val >= 0.7:

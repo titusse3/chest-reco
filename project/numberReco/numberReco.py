@@ -3,7 +3,7 @@ import easyocr
 def correct_ocr_errors(text):
   corrections = {
     'l': '1', 'i': '1', 'I': '1', 'o': '0', 'O': '0', 'B': '8', 'S': '5', 
-    's': '5', 'x' : '', 'k' : ''
+    's': '5', 'x' : '', 'k' : '', ' ' : ''
   }
 
   text = text.lower()
@@ -16,7 +16,7 @@ def number_ocr(image_path):
   reader = easyocr.Reader(['fr', 'en'], gpu=True)
 
   resultats = reader.readtext(image_path, detail=0)
-  
+
   if len(resultats) >= 1 :
     num = resultats[0]
   else:
