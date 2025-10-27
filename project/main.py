@@ -2,7 +2,7 @@ import os
 from inv_gestion.recette import items, equipements
 from imgExtraction.imgExtraction import item_extractor, number_extractor
 from numberReco.numberReco import number_ocr
-from inv_gestion.inventaire import Inventaire, show_diffrence, load_inventory
+from inv_gestion.inventaire import Inventaire
 
 import argparse
 import cv2
@@ -16,6 +16,10 @@ Solve.
 """
 PATH_DESC = """
 Chemin vers le dossier contenant les images du coffre à analyser.
+"""
+DIFFERENCE_DESC = """
+Option qui permet d'afficher les ajouts et retraits par rapport au dernier
+inventaire sauvegardé dans le dossier des logs.
 """
 
 def get_closest_file(folder_path : str) -> str | None:
@@ -52,13 +56,15 @@ def get_number_from_image(image):
 def main():
   parser = argparse.ArgumentParser(description=DESC_PROG)
   parser.add_argument('filename', type=str, help=PATH_DESC)
-  coffre_path = parser.parse_args().filename
+  parser.add_argument('-d', '--diff', action='store_true', help=DIFFERENCE_DESC)
+  arg = parser.parse_args()
+  coffre_path = arg.filename
 
   old_path = get_closest_file(LOGS_FOLDER)
   if old_path is None:
     print("Aucun fichier de log trouvé.")
     exit(1)
-  old_inv = load_inventory(old_path)
+  old_inv = Inventaire.load_inventory(old_path)
   
   all_items = []
   for item in (items + equipements):
@@ -69,20 +75,21 @@ def main():
         continue
       number = get_number_from_image(result)
       item_qt.append((item.name, number))
-      print(f"Détection de {number} x {item.name} dans l'image {img}.")
-
-    if not all(q == item_qt[0] for q in item_qt):
-      print(f"Paramètres différents détectés pour {item.name}.")
+      # print(f"Détection de {number} x {item.name} dans l'image {img}.")
 
     if item_qt == []:
       continue
+
+    if not all(q == item_qt[0] for q in item_qt):
+      print(f"Paramètres différents détectés pour {item.name}.")
     
     all_items.append((item.name, max(qt for (_, qt) in item_qt)))
-    print(f"Item {item.name} treated.")
+    # print(f"Item {item.name} treated.")
 
   inv = Inventaire(all_items)
-  add, remove = old_inv.difference(inv)
-  show_diffrence(add, remove, inv)
+  print(inv, end="\n")
+  if arg.diff:
+    inv.show_difference(old_inv)
 
 if __name__ == "__main__":
   main()
