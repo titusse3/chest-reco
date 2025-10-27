@@ -22,12 +22,6 @@ class Item:
     print(f"║ {line2:<{width-2}} ║")
     print(f"╚{border}╝")
 
-  def display_image(self):
-    img = cv2.imread(self.img_path)
-    cv2.imshow("Image", img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
 class Recette:
   def __init__(self, result_item : Item, ingredients : list):
     self.result_item = result_item

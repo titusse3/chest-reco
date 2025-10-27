@@ -26,32 +26,6 @@ class Inventaire:
       print(f"• {nom}: \033[1;32m{quantite}\033[0m")
     print()
 
-  def craft(self, recette, n):
-    """
-    Essaie de réaliser la recette n fois.
-    La recette doit fournir deux attributs : 'inputs' et 'outputs', 
-    lesquels sont des listes de tuples (item, quantité).
-    Retourne une nouvelle instance d'Inventaire avec le stock modifié 
-    (les ingrédients retirés et les produits ajoutés), sans modifier l'inventaire courant.
-    Si un ingrédient est insuffisant, affiche un message et retourne None.
-    """
-    new_inv = Inventaire()
-    new_inv.stock = self.stock.copy()
-
-    for (item, quantite) in recette.ingredients:
-      return None
-
-    for item, quantite in recette.ingredients:
-      if new_inv.stock.get(item.name, 0) < quantite * n:
-        print(f"Recette impossible: {item.name} en quantité insuffisante.")
-        return None
-      new_inv.stock[item.name] -= quantite * n
-
-    res = recette.result_item
-    new_inv.stock[res.name] = new_inv.stock.get(res.name, 0) + n
-
-    return new_inv
-
   def difference(self, other : "Inventaire"):
     added = {}
     removed = {}
