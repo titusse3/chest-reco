@@ -9,17 +9,6 @@ import math
 
 X_IMG = "ressources/x.jpg"
 
-def compare(l1, l2):
-  ll = {n : i for (n, i) in l1}
-  for (name, qt) in l2:
-    if name in ll:
-      ll[name] = qt
-      print(f"Mise à jour de {name}: {ll[name]} -> {qt}")
-    else:
-      ll[name] = qt
-      print(f"Ajout de {name}: {qt}")
-  return [(n, i) for (n, i) in ll.items()]
-
 def get_closest_file(folder_path : str) -> str | None:
   files = os.listdir(folder_path)
   files.sort()
@@ -59,17 +48,25 @@ def main(coffre_path, logs_folder="ressources/logs"):
   old_inv = load_inventory(old_path)
   
   all_items = []
-  for img in os.listdir(coffre_path):
-    img_items = []
-    for item in (items + equipements):
+  for item in (items + equipements):
+    item_qt = []
+    for img in os.listdir(coffre_path):
       result = item_extractor(os.path.join(coffre_path, img), item.img_path)
       if result is None:
         continue
       number = get_number_from_image(result)
-      img_items.append((item.name, number))
+      item_qt.append((item.name, number))
       print(f"Détection de {number} x {item.name} dans l'image {img}.")
-    all_items = compare(all_items, img_items)
-    print(f"File {img} treated.")
+    
+    if len(item_qt) == 0:
+      print(f"Aucune occurrence détectée pour l'objet {item.name}.")
+      continue
+
+    if not all(q == item_qt[0] for q in item_qt):
+      print(f"Paramètres différents détectés pour {item.name}.")
+  
+    all_items.append((item.name, max(qt for (_, qt) in item_qt)))
+    print(f"Item {item.name} treated.")
 
   inv = Inventaire(all_items)
   add, remove = old_inv.difference(inv)
