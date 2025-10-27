@@ -4,10 +4,19 @@ from imgExtraction.imgExtraction import item_extractor, number_extractor
 from numberReco.numberReco import number_ocr
 from inv_gestion.inventaire import Inventaire, show_diffrence, load_inventory
 
+import argparse
 import cv2
 import math
 
 X_IMG = "ressources/x.jpg"
+LOGS_FOLDER="ressources/logs"
+DESC_PROG = """
+Programme de reconnaissance d'objets et de quantité dans un coffre Naruto RP 
+Solve.
+"""
+PATH_DESC = """
+Chemin vers le dossier contenant les images du coffre à analyser.
+"""
 
 def get_closest_file(folder_path : str) -> str | None:
   files = os.listdir(folder_path)
@@ -40,8 +49,12 @@ def get_number_from_image(image):
     return int(n)
   return 1
 
-def main(coffre_path, logs_folder="ressources/logs"):
-  old_path = get_closest_file(logs_folder)
+def main():
+  parser = argparse.ArgumentParser(description=DESC_PROG)
+  parser.add_argument('filename', type=str, help=PATH_DESC)
+  coffre_path = parser.parse_args().filename
+
+  old_path = get_closest_file(LOGS_FOLDER)
   if old_path is None:
     print("Aucun fichier de log trouvé.")
     exit(1)
@@ -57,14 +70,13 @@ def main(coffre_path, logs_folder="ressources/logs"):
       number = get_number_from_image(result)
       item_qt.append((item.name, number))
       print(f"Détection de {number} x {item.name} dans l'image {img}.")
-    
-    if len(item_qt) == 0:
-      print(f"Aucune occurrence détectée pour l'objet {item.name}.")
-      continue
 
     if not all(q == item_qt[0] for q in item_qt):
       print(f"Paramètres différents détectés pour {item.name}.")
-  
+
+    if item_qt == []:
+      continue
+    
     all_items.append((item.name, max(qt for (_, qt) in item_qt)))
     print(f"Item {item.name} treated.")
 
@@ -73,4 +85,4 @@ def main(coffre_path, logs_folder="ressources/logs"):
   show_diffrence(add, remove, inv)
 
 if __name__ == "__main__":
-  main("ressources/coffre/22_10_25")
+  main()
