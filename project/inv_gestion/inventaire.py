@@ -46,37 +46,37 @@ class Inventaire:
         removed[item] = self_qty - other_qty
     return added, removed
 
-def show_diffrence(added, removed, inv):
-  print("\033[1;34mAjouts:\033[0m")
-  if added:
-    for nom, quantite in added.items():
-      print(f"• {nom}: \033[1;32m+{quantite}\033[0m ({inv.stock.get(nom, 0)})")
-  else:
-    print("\033[1;33mAucun ajout.\033[0m")
+  def show_difference(self, other : "Inventaire"):
+    added, removed = self.difference(other)
+    print("\033[1;34mAjouts:\033[0m")
+    if added:
+      for nom, quantite in added.items():
+        print(f"• {nom}: \033[1;32m+{quantite}\033[0m ({self.stock.get(nom, 0)})")
+    else:
+      print("\033[1;33mAucun ajout.\033[0m")
 
-  print("\033[1;34mRetraits:\033[0m")
-  if removed:
-    for nom, quantite in removed.items():
-      print(f"• {nom}: \033[1;31m-{quantite}\033[0m ({inv.stock.get(nom, 0)})")
-  else:
-    print("\033[1;33mAucun retrait.\033[0m")
+    print("\033[1;34mRetraits:\033[0m")
+    if removed:
+      for nom, quantite in removed.items():
+        print(f"• {nom}: \033[1;31m-{quantite}\033[0m ({self.stock.get(nom, 0)})")
+    else:
+      print("\033[1;33mAucun retrait.\033[0m")
 
-def save_inventory(inventory, filepath : str):
-  """
-  Sauvegarde l'inventaire dans un fichier au format JSON.
-  L'inventaire est enregistré sous forme de liste de couples (nom, quantité).
-  """
-  with open(filepath, "w", encoding="utf-8") as f:
-    json.dump(inventory.to_list(), f, ensure_ascii=False, indent=4)
-  print(f"Inventaire sauvegardé dans {filepath}.")
+  @staticmethod
+  def load_inventory(filepath : str) -> "Inventaire":
+    """
+    Crée une instance d'Inventaire à partir d'un fichier sauvegardé au format 
+    JSON. Retourne une instance d'Inventaire.
+    """
+    with open(filepath, "r", encoding="utf-8") as f:
+      data = json.load(f)
+    inv = Inventaire(data)
+    return inv
 
-def load_inventory(filepath : str):
-  """
-  Crée une instance d'Inventaire à partir d'un fichier sauvegardé au format JSON.
-  Retourne une instance d'Inventaire.
-  """
-  with open(filepath, "r", encoding="utf-8") as f:
-    data = json.load(f)
-  inv = Inventaire(data)
-  print(f"Inventaire chargé depuis {filepath}.")
-  return inv
+  def save_inventory(self, filepath : str):
+    """
+    Sauvegarde l'inventaire dans un fichier au format JSON.
+    L'inventaire est enregistré sous forme de liste de couples (nom, quantité).
+    """
+    with open(filepath, "w", encoding="utf-8") as f:
+      json.dump(self.to_list(), f, ensure_ascii=False, indent=4)

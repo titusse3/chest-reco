@@ -1,5 +1,7 @@
 from inv_gestion.inventaire import Inventaire
 
+import json
+
 def test_to_list_empty():
   i = Inventaire()
   l = i.to_list()
@@ -53,3 +55,14 @@ def test_nempty_difference_removed():
   added, removed = i1.difference(i2)
   assert added == {}, "Aucun ajout attendu"
   assert removed == {"pomme": 2, "banane": 3}, "Retraits incorrects"
+
+def test_save_inventory(tmp_path):
+  l = [("pomme", 4), ("carrote", 2)]
+  i = Inventaire(l)
+  filepath = tmp_path / "test_inv.json"
+  i.save_inventory(str(filepath))
+  assert filepath.exists()
+  content = filepath.read_text(encoding="utf-8")
+  assert '"pomme"' in content
+  assert '"carrote"' in content
+  assert json.loads(content), "Le contenu du fichier JSON est incorrect"
