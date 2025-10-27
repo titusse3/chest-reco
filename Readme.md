@@ -4,6 +4,19 @@ Programme permettant d'estimer les stocks à partir d'images d'un coffre dans
 le jeu vidéo _Garry's Mod_, en utilisant l'extraction de motifs et la 
 reconnaissance optique de caractères (OCR) pour lire les quantités.
 
+## Exemple d'image
+
+### Remarques sur la capture
+
+Le coffre doit être capturé en plusieurs prises successives pour couvrir l'ensemble des emplacements. Veillez à :
+- recouvrir légèrement les zones entre captures,
+
+_Exemple :_
+![Image 1](project/ressources/coffre/18_10_25/1.jpg)
+![Image 1](project/ressources/coffre/18_10_25/2.jpg)
+![Image 1](project/ressources/coffre/18_10_25/3.jpg)
+![Image 1](project/ressources/coffre/18_10_25/4.jpg)
+
 ## Installation et utilisation
 
 Prérequis :
