@@ -26,7 +26,14 @@ class Inventaire:
       print(f"• {nom}: \033[1;32m{quantite}\033[0m")
     print()
 
-  def difference(self, other : "Inventaire"):
+  def difference(self, other : "Inventaire") -> tuple[dict, dict]:
+    """
+    Compare l'inventaire actuel avec un autre inventaire.
+    Retourne deux dictionnaires:
+    - Le premier dictionnaire contient les articles ajoutés.
+    - Le deuxième dictionnaire contient les articles retirés.
+    """
+
     added = {}
     removed = {}
     all_items = set(self.stock.keys()).union(other.stock.keys())
