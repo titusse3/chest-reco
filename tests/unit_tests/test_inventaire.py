@@ -1,6 +1,7 @@
 from inv_gestion.inventaire import Inventaire
 
 import json
+import pytest
 
 def test_to_list_empty():
   i = Inventaire()
@@ -11,6 +12,11 @@ def test_to_list_nempty():
   l = [("pomme", 4), ("carrote", 2)]
   i = Inventaire(l)
   assert i.to_list() == l, "Le contenue doit être le même que l'inventaire"
+
+def test_create_inv_with_duplicates():
+  l = [("pomme", 4), ("carrote", 2), ("pomme", 3)]
+  with pytest.raises(ValueError):
+    i = Inventaire(l)
 
 def test_display_empty_inv(capsys):
   i = Inventaire()
@@ -66,3 +72,9 @@ def test_save_inventory(tmp_path):
   assert '"pomme"' in content
   assert '"carrote"' in content
   assert json.loads(content), "Le contenu du fichier JSON est incorrect"
+
+def test_to_str():
+  l = [("pomme", 4), ("carrote", 2)]
+  i = Inventaire(l)
+  s = str(i)
+  assert s == "pomme\t4\ncarrote\t2\n", "Représentation en chaîne incorrecte"

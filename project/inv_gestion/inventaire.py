@@ -4,6 +4,8 @@ class Inventaire:
   def __init__(self, list_of_tuples = []):
     self.stock = {}
     for (nom, quantite) in list_of_tuples:
+      if nom in self.stock:
+        raise ValueError(f"Article dupliqué dans l'inventaire: {nom}")
       self.stock[nom] = quantite
 
   def to_list(self) -> list:
@@ -61,6 +63,12 @@ class Inventaire:
         print(f"• {nom}: \033[1;31m-{quantite}\033[0m ({self.stock.get(nom, 0)})")
     else:
       print("\033[1;33mAucun retrait.\033[0m")
+
+  def __str__(self):
+    s = ""
+    for nom, quantite in self.stock.items():
+      s += f"{nom}\t{quantite}\n"
+    return s
 
   @staticmethod
   def load_inventory(filepath : str) -> "Inventaire":
