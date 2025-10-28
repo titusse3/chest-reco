@@ -7,6 +7,8 @@ from inv_gestion.inventaire import Inventaire
 import argparse
 import cv2
 import math
+from multiprocessing import Pool
+from functools import partial
 
 X_IMG = "ressources/x.jpg"
 LOGS_FOLDER="ressources/logs"
@@ -53,6 +55,17 @@ def get_number_from_image(image):
     return int(n)
   return 1
 
+def get_items_from_img(coffre_path : str, img : str):
+  item_qt = []
+  for item in (items + equipements):
+    result = item_extractor(os.path.join(coffre_path, img), item.img_path)
+    if result is None:
+      continue
+    number = get_number_from_image(result)
+    item_qt.append((item.name, number))
+  
+  return item_qt
+
 def main():
   parser = argparse.ArgumentParser(description=DESC_PROG)
   parser.add_argument('filename', type=str, help=PATH_DESC)
@@ -66,21 +79,19 @@ def main():
     exit(1)
   old_inv = Inventaire.load_inventory(old_path)
   
+  files = os.listdir(coffre_path)
+  files_number = len(files)
+
   all_items = []
-  for img in os.listdir(coffre_path):
-    item_qt = []
-    for item in (items + equipements):
-      result = item_extractor(os.path.join(coffre_path, img), item.img_path)
-      if result is None:
-        continue
-      number = get_number_from_image(result)
-      item_qt.append((item.name, number))
-    
+  with Pool(files_number) as p:
+    results = p.map(partial(get_items_from_img, coffre_path), files)
+
+    item_qt = [pair for sub in results for pair in (sub or [])]
     for (item, qt) in item_qt:
       if (item, qt) not in all_items:
         all_items.append((item, qt))
       else:
-        print(f"Doublon détecté pour l'item {item} dans l'image {img}.")
+        print(f"Doublon détecté pour l'item {item} dans l'image.")
 
   inv = Inventaire(all_items)
   print(inv, end="\n")
