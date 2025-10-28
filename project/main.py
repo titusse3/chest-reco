@@ -40,7 +40,7 @@ def img_resize(image):
   print(f"Pixels: {w*h} -> {new_w*new_h} ({scale:.3f}x linear)")
   return image
 
-def get_number_from_image(image):
+def get_number_from_image(image) -> int | None:
   number_img = number_extractor(image, X_IMG)
   if number_img is not None:
     n = number_ocr(number_img)
@@ -66,6 +66,12 @@ def get_items_from_img(coffre_path : str, img : str):
   
   return item_qt
 
+def flatten(xss : list[list]) -> list:
+  """
+  Flattens une liste de liste en une liste simple.
+  """
+  return [x for xs in xss for x in xs]
+
 def main():
   parser = argparse.ArgumentParser(description=DESC_PROG)
   parser.add_argument('filename', type=str, help=PATH_DESC)
@@ -80,18 +86,14 @@ def main():
   old_inv = Inventaire.load_inventory(old_path)
   
   files = os.listdir(coffre_path)
-  files_number = len(files)
+  files = [f for f in files if f.endswith('.png') or f.endswith('.jpg')]
 
   all_items = []
-  with Pool(files_number) as p:
+  with Pool(len(files)) as p:
     results = p.map(partial(get_items_from_img, coffre_path), files)
 
-    item_qt = [pair for sub in results for pair in (sub or [])]
-    for (item, qt) in item_qt:
-      if (item, qt) not in all_items:
-        all_items.append((item, qt))
-      else:
-        print(f"Doublon détecté pour l'item {item} dans l'image.")
+    item_qt = flatten(results)
+    all_items = list(set(item_qt))
 
   inv = Inventaire(all_items)
   print(inv, end="\n")
