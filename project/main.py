@@ -67,24 +67,20 @@ def main():
   old_inv = Inventaire.load_inventory(old_path)
   
   all_items = []
-  for item in (items + equipements):
+  for img in os.listdir(coffre_path):
     item_qt = []
-    for img in os.listdir(coffre_path):
+    for item in (items + equipements):
       result = item_extractor(os.path.join(coffre_path, img), item.img_path)
       if result is None:
         continue
       number = get_number_from_image(result)
       item_qt.append((item.name, number))
-      # print(f"Détection de {number} x {item.name} dans l'image {img}.")
-
-    if item_qt == []:
-      continue
-
-    if not all(q == item_qt[0] for q in item_qt):
-      print(f"Paramètres différents détectés pour {item.name}.")
     
-    all_items.append((item.name, max(qt for (_, qt) in item_qt)))
-    # print(f"Item {item.name} treated.")
+    for (item, qt) in item_qt:
+      if (item, qt) not in all_items:
+        all_items.append((item, qt))
+      else:
+        print(f"Doublon détecté pour l'item {item} dans l'image {img}.")
 
   inv = Inventaire(all_items)
   print(inv, end="\n")
