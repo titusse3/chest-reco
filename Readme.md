@@ -17,6 +17,8 @@ _Exemple :_
 ![Image 1](project/ressources/coffre/18_10_25/3.jpg)
 ![Image 1](project/ressources/coffre/18_10_25/4.jpg)
 
+Les captures du coffre doivent être effectuées directement via Steam, afin d'éviter tout problème lié aux dimensions des images.
+
 ## Installation et utilisation
 
 Prérequis :
