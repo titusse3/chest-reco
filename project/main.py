@@ -56,9 +56,10 @@ def get_number_from_image(image) -> int | None:
   return 1
 
 def get_items_from_img(coffre_path : str, img : str):
+  path = os.path.join(coffre_path, img)
   item_qt = []
   for item in (items + equipements):
-    result = item_extractor(os.path.join(coffre_path, img), item.img_path)
+    result = item_extractor(path, item.img_path)
     if result is None:
       continue
     number = get_number_from_image(result)

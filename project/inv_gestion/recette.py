@@ -95,7 +95,7 @@ collier_t4 = Item("collier_t4", "ressources/ressource/equipement/collier_t4.png"
 
 ## pantalon
 pantalon_hp_t3 = Item("pantalon_hp_t3", "ressources/ressource/equipement/pantalon_hp_t3.png")
-pantalon_jutsu_t4 = Item("pantalon_jutsu", "ressources/ressource/equipement/pantalon_jutsu_t4.png")
+pantalon_jutsu_t4 = Item("pantalon_jutsu_t4", "ressources/ressource/equipement/pantalon_jutsu_t4.png")
 # patalon_armure_t3 = Item("patalon_armure_t3", "ressources/ressource/equipement/pantalon_armure_t3.png")
 pantalon_armure_t4 = Item("pantalon_armure_t4", "ressources/ressource/equipement/pantalon_armure_t4.png")
 
