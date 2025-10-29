@@ -1,0 +1,60 @@
+aluminium       4986
+gant_t2 1
+eclat de lune   36
+métaux  19023
+bois    6046
+plume   4836
+magnesium       15469
+pantalon_jutsu   2
+planche 2162
+bague_t2        11
+torse_armure_t4 5
+pierre volcanique       278
+diamant pur     916
+diamant raffiné 3
+tissue précieux 206
+tissue  2135
+diamant brute   3303
+diamant 631
+collier_t4      1
+boucle_t2       2
+parchemin legendaire    1050
+parchemin rare  1446
+ficelle 2220
+pavot   47
+lingo obsidienne        21
+emeraude        3079
+boucle_t3       15
+parchemin basique       1518
+parchemin doré  146
+perle de nacre  157
+parchemin epic  563
+artefacte       864
+laine   1
+lingo emeraude  19
+lingot de fer   820
+bottes_t2       22
+parchemin       1490
+lingot acier    691
+cuir    5260
+obsidienne brute        2310
+pochette en cuir        5182
+gant_t4 1
+lingot de cuivre        217
+papier  5169
+collier_t2      25
+bronzite        17030
+laniere 4636
+dain    1
+manuscrit       643
+or brute        997
+sphere de bois  21816
+pantalon_hp_t3   15
+cuivre brute    8538
+bottes_t4       1
+acier brute     3257
+pantalon_armure_t4       4
+collier_t3      15
+fer brute       10183
+batton  33926
+torse_hp_t3     11

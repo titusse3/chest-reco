@@ -1,6 +1,10 @@
 from inv_gestion.item import Item, Recette
 
+from pathlib import Path
+
 #### lingo_or, coeur_lune
+
+# _BASE = str(Path(__file__).parent.resolve())
 
 # commun
 planche = Item("planche", "ressources/ressource/commun/planche.png")
@@ -89,11 +93,11 @@ collier_t2 = Item("collier_t2", "ressources/ressource/equipement/collier_t2.png"
 collier_t3 = Item("collier_t3", "ressources/ressource/equipement/collier_t3.png")
 collier_t4 = Item("collier_t4", "ressources/ressource/equipement/collier_t4.png")
 
-## patalon
-patalon_hp_t3 = Item("patalon_hp_t3", "ressources/ressource/equipement/pantalon_hp_t3.png")
-patalon_jutsu_t4 = Item("patalon_jutsu", "ressources/ressource/equipement/pantalon_jutsu_t4.png")
+## pantalon
+pantalon_hp_t3 = Item("pantalon_hp_t3", "ressources/ressource/equipement/pantalon_hp_t3.png")
+pantalon_jutsu_t4 = Item("pantalon_jutsu", "ressources/ressource/equipement/pantalon_jutsu_t4.png")
 # patalon_armure_t3 = Item("patalon_armure_t3", "ressources/ressource/equipement/pantalon_armure_t3.png")
-patalon_armure_t4 = Item("patalon_armure_t4", "ressources/ressource/equipement/pantalon_armure_t4.png")
+pantalon_armure_t4 = Item("pantalon_armure_t4", "ressources/ressource/equipement/pantalon_armure_t4.png")
 
 ## torse
 torse_hp_t3 = Item("torse_hp_t3", "ressources/ressource/equipement/torse_hp_t3.png")
@@ -136,10 +140,10 @@ recette_gant_t2 = Recette(gant_t2, [(pochette_cuir, 4), (plume, 4), (laniere, 4)
 recette_gant_t4 = Recette(gant_t4, [(diamant_pure, 1), (eclat_lune, 1), (emeraude, 1), (laniere, 8), (or_brute, 1), (pochette_cuir, 8), (plume, 8), (tissue_precieux, 2)])
 
 ## patalon
-recette_patalon_hp_t3 = Recette(patalon_hp_t3, [(tissue, 6), (lingo_acier, 6), (metaux, 6), (lingo_emeraude, 1)])
-recette_patalon_jutsu_t4 = Recette(patalon_jutsu_t4, [(lingo_cuivre, 8), (tissue_precieux, 2), (laine, 8), (lingo_or, 1), (lingo_acier, 8)])
+recette_patalon_hp_t3 = Recette(pantalon_hp_t3, [(tissue, 6), (lingo_acier, 6), (metaux, 6), (lingo_emeraude, 1)])
+recette_patalon_jutsu_t4 = Recette(pantalon_jutsu_t4, [(lingo_cuivre, 8), (tissue_precieux, 2), (laine, 8), (lingo_or, 1), (lingo_acier, 8)])
 # recette_patalon_armure_t3 = Recette(patalon_armure_t3, [(tissue, 6), (lingo_acier, 6), (lingo_fer, 6), (lingo_obsidienne, 1)])
-recette_patalon_armure_t4 = Recette(patalon_armure_t4, [(pierre_volcanique, 2), (lingo_obsidienne, 1), (tissue, 8), (lingo_acier, 8), (lingo_fer, 8)])
+recette_patalon_armure_t4 = Recette(pantalon_armure_t4, [(pierre_volcanique, 2), (lingo_obsidienne, 1), (tissue, 8), (lingo_acier, 8), (lingo_fer, 8)])
 
 ## collier
 recette_collier_t2 = Recette(collier_t2, [(lingo_cuivre, 4), (ficelle, 2), (lingo_acier, 4), (plume, 4), (parchemin_rare, 1)])
@@ -165,6 +169,6 @@ items = [
 equipements = [
   bague_t2, bague_t4, boucle_t2, boucle_t3, boucle_t4, collier_t2, collier_t3, 
   collier_t4, bottes_t2, bottes_t4, gant_t2, gant_t4,
-  patalon_hp_t3, patalon_jutsu_t4, patalon_armure_t4,
+  pantalon_hp_t3, pantalon_jutsu_t4, pantalon_armure_t4,
   torse_hp_t3, torse_armure_t4
 ]
