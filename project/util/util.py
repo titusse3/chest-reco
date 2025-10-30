@@ -8,7 +8,7 @@ def get_closest_file(folder_path : str) -> str | None:
     return None
   return os.path.join(folder_path, files[-1])
 
-def preprocess_image(folder_path : str):
+def preprocess_image(folder_path : str) -> list[str]:
   files = os.listdir(folder_path)
   l = []
   for f in files:
