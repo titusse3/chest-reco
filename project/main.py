@@ -9,8 +9,6 @@ import argparse
 from multiprocessing import Pool
 from functools import partial
 
-import math
-
 X_IMG = "ressources/x.jpg"
 LOGS_FOLDER="ressources/logs"
 DESC_PROG = """
