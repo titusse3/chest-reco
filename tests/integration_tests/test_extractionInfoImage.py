@@ -19,6 +19,9 @@ testdata = [
   (collier_t4, 7),
   (bottes_t4, 2),
   (ficelle, 1803),
+  (pomme, 1304),
+  (pavot, 62),
+  (lingo_obsidienne, 21)
 ]
 
 @pytest.mark.parametrize("template, number", testdata)
