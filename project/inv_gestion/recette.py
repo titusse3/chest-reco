@@ -2,7 +2,7 @@ from inv_gestion.item import Item, Recette
 
 from pathlib import Path
 
-#### lingo_or, coeur_lune
+#### coeur_lune
 
 _BASE = str(Path(__file__).parent.parent.resolve())
 
@@ -42,6 +42,7 @@ metaux = Item("métaux", _BASE + "/ressources/ressource/rare/metaux.png")
 # epic
 eclat_lune = Item("eclat de lune", _BASE + "/ressources/ressource/epic/eclat_lune.png")
 or_brute = Item("or brute", _BASE + "/ressources/ressource/epic/or_brute.png")
+lingot_or = Item("lingot d'or", _BASE + "/ressources/ressource/epic/lingot_or.png")
 emeraude = Item("emeraude", _BASE + "/ressources/ressource/epic/emeraude.png")
 obsidienne_brute = Item("obsidienne brute", _BASE + "/ressources/ressource/epic/obsidienne_brute.png")
 parchemin_epic = Item("parchemin epic", _BASE + "/ressources/ressource/epic/parchemin_epic.png")
@@ -102,7 +103,7 @@ pantalon_armure_t4 = Item("pantalon_armure_t4", _BASE + "/ressources/ressource/e
 ## torse
 torse_hp_t3 = Item("torse_hp_t3", _BASE + "/ressources/ressource/equipement/torse_hp_t3.png")
 torse_armure_t4 = Item("torse_armure_t4", _BASE + "/ressources/ressource/equipement/torse_armure_t4.png")
-# torse_jutsu_t4 = Item("torse_jutsu_t4", _BASE + "/ressources/ressource/equipement/torse_jutsu_t4.png")
+torse_jutsu_t4 = Item("torse_jutsu_t4", _BASE + "/ressources/ressource/equipement/torse_jutsu_t4.png")
 torse_armure_t4 = Item("torse_armure_t4", _BASE + "/ressources/ressource/equipement/torse_armure_t4.png")
 
 # recette ======================================================================
@@ -152,7 +153,7 @@ recette_collier_t4 = Recette(collier_t4, [(parchemin_legendaire, 2), (diamant_ra
 
 ## torse
 recette_torse_hp_t3 = Recette(torse_hp_t3, [(ficelle, 6), (dain, 6), (lingo_cuivre, 6), (or_brute, 2), (obsidienne_brute, 2)])
-# recette_torse_jutsu_t4 = Recette(torse_jutsu_t4, [(ficelle, 8), (eclat_lune, 2), (pierre_volcanique, 2), (parchemin_dore, 2), (lingo_acier, 8), (lingo_fer, 8)])
+recette_torse_jutsu_t4 = Recette(torse_jutsu_t4, [(ficelle, 8), (eclat_lune, 2), (pierre_volcanique, 2), (parchemin_dore, 2), (lingo_acier, 8), (lingo_fer, 8)])
 recette_torse_armure_t4 = Recette(torse_armure_t4, [(dain, 8), (lingo_obsidienne, 1), (pierre_volcanique, 2), (ficelle, 8), (lingo_acier, 8)])
 
 items = [
@@ -163,7 +164,7 @@ items = [
   eclat_lune, or_brute, emeraude, obsidienne_brute, parchemin_epic,
   lingo_emeraude, pavot, lingo_obsidienne, diamant_brute, diamant_pure, diamant_raffiner,
   pierre_volcanique, parchemin_legendaire, artefacte, perle_nacre,
-  parchemin_dore, diamant, tissue_precieux
+  parchemin_dore, diamant, tissue_precieux, lingot_or
 ]
 
 equipements = [
