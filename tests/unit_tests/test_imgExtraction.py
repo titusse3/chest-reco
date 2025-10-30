@@ -23,7 +23,7 @@ def test_item_extractor(img, template, expected):
     cv2.waitKey(0)
   assert (result is not None) == expected
 
-x_img = _BASE + "/test_images/x.jpg"
+x_img = _BASE + "/test_images/x_new.jpg"
 test_number_extractor = [
   (_BASE + "/test_images/1/result.png"),
   (_BASE + "/test_images/2/result.png"),

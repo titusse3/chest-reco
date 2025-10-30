@@ -43,6 +43,9 @@ def item_extractor(image, template):
     return roi
   return None
 
+WIDTH_OFFSET = 40
+HEIGHT_OFFSET = 5
+
 def number_extractor(image, template):
   template = Template(image_path=template, label=template, color=(0, 0, 255))
   template_matching = cv2.matchTemplate(template.template, image, cv2.TM_CCOEFF_NORMED)
@@ -51,9 +54,9 @@ def number_extractor(image, template):
     x, y = max_loc
     detection = {
       "TOP_LEFT_X": x,
-      "TOP_LEFT_Y": y,
-      "BOTTOM_RIGHT_X": x + template.template_width + 40,
-      "BOTTOM_RIGHT_Y": y + template.template_height - 5,
+      "TOP_LEFT_Y": y - HEIGHT_OFFSET,
+      "BOTTOM_RIGHT_X": x + template.template_width + WIDTH_OFFSET,
+      "BOTTOM_RIGHT_Y": y + template.template_height + HEIGHT_OFFSET,
       "MATCH_VALUE": max_val,
       "LABEL": template.label,
       "COLOR": template.color

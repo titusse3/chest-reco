@@ -4,65 +4,65 @@ from pathlib import Path
 
 #### lingo_or, coeur_lune
 
-# _BASE = str(Path(__file__).parent.resolve())
+_BASE = str(Path(__file__).parent.parent.resolve())
 
 # commun
-planche = Item("planche", "ressources/ressource/commun/planche.png")
-plume = Item("plume", "ressources/ressource/commun/plume.png")
-tissue = Item("tissue", "ressources/ressource/commun/tissue.png")
-ficelle = Item("ficelle", "ressources/ressource/commun/ficelle.png")
-pomme = Item("pomme", "ressources/ressource/commun/pomme.png")
-parchemin_basique = Item("parchemin basique", "ressources/ressource/commun/parchemin_basique.png")
-laine = Item("laine", "ressources/ressource/commun/laine.png")
-parchemin = Item("parchemin", "ressources/ressource/commun/parchemin.png")
-papier = Item("papier", "ressources/ressource/commun/papier.png")
-plume = Item("plume", "ressources/ressource/commun/plume.png")
-laniere = Item("laniere", "ressources/ressource/commun/laniere.png")
-cuivre_brute = Item("cuivre brute", "ressources/ressource/commun/cuivre_brute.png")
-sphere_bois = Item("sphere de bois", "ressources/ressource/commun/sphere_bois.png")
-fer_brute = Item("fer brute", "ressources/ressource/commun/fer_brute.png")
-batton = Item("batton", "ressources/ressource/commun/batton.png")
-acier_brute = Item("acier brute", "ressources/ressource/commun/acier_brute.png")
+planche = Item("planche", _BASE + "/ressources/ressource/commun/planche.png")
+plume = Item("plume", _BASE + "/ressources/ressource/commun/plume.png")
+tissue = Item("tissue", _BASE + "/ressources/ressource/commun/tissue.png")
+ficelle = Item("ficelle", _BASE + "/ressources/ressource/commun/ficelle.png")
+pomme = Item("pomme", _BASE + "/ressources/ressource/commun/pomme.png")
+parchemin_basique = Item("parchemin basique", _BASE + "/ressources/ressource/commun/parchemin_basique.png")
+laine = Item("laine", _BASE + "/ressources/ressource/commun/laine.png")
+parchemin = Item("parchemin", _BASE + "/ressources/ressource/commun/parchemin.png")
+papier = Item("papier", _BASE + "/ressources/ressource/commun/papier.png")
+plume = Item("plume", _BASE + "/ressources/ressource/commun/plume.png")
+laniere = Item("laniere", _BASE + "/ressources/ressource/commun/laniere.png")
+cuivre_brute = Item("cuivre brute", _BASE + "/ressources/ressource/commun/cuivre_brute.png")
+sphere_bois = Item("sphere de bois", _BASE + "/ressources/ressource/commun/sphere_bois.png")
+fer_brute = Item("fer brute", _BASE + "/ressources/ressource/commun/fer_brute.png")
+batton = Item("batton", _BASE + "/ressources/ressource/commun/batton.png")
+acier_brute = Item("acier brute", _BASE + "/ressources/ressource/commun/acier_brute.png")
 
 # rare
-aluminium = Item("aluminium", "ressources/ressource/rare/aluminium.png")
-bois = Item("bois", "ressources/ressource/rare/bois.png")
-magnesium = Item("magnesium", "ressources/ressource/rare/magnesium.png")
-cuir = Item("cuir", "ressources/ressource/rare/cuir.png")
-parchemin_rare = Item("parchemin rare", "ressources/ressource/rare/parchemin_rare.png")
-dain = Item("dain", "ressources/ressource/rare/dain.png")
-lingo_acier = Item("lingot acier", "ressources/ressource/rare/lingot_acier.png")
-lingo_fer = Item("lingot de fer", "ressources/ressource/rare/lingot_fer.png")
-pochette_cuir =  Item("pochette en cuir", "ressources/ressource/rare/pochette_cuir.png")
-lingo_cuivre = Item("lingot de cuivre", "ressources/ressource/rare/lingot_cuivre.png")
-bronzite = Item("bronzite", "ressources/ressource/rare/bronzite.png")
-manuscrit = Item("manuscrit", "ressources/ressource/rare/manuscrit.png")
-metaux = Item("métaux", "ressources/ressource/rare/metaux.png")
+aluminium = Item("aluminium", _BASE + "/ressources/ressource/rare/aluminium.png")
+bois = Item("bois", _BASE + "/ressources/ressource/rare/bois.png")
+magnesium = Item("magnesium", _BASE + "/ressources/ressource/rare/magnesium.png")
+cuir = Item("cuir", _BASE + "/ressources/ressource/rare/cuir.png")
+parchemin_rare = Item("parchemin rare", _BASE + "/ressources/ressource/rare/parchemin_rare.png")
+dain = Item("dain", _BASE + "/ressources/ressource/rare/dain.png")
+lingo_acier = Item("lingot acier", _BASE + "/ressources/ressource/rare/lingot_acier.png")
+lingo_fer = Item("lingot de fer", _BASE + "/ressources/ressource/rare/lingot_fer.png")
+pochette_cuir =  Item("pochette en cuir", _BASE + "/ressources/ressource/rare/pochette_cuir.png")
+lingo_cuivre = Item("lingot de cuivre", _BASE + "/ressources/ressource/rare/lingot_cuivre.png")
+bronzite = Item("bronzite", _BASE + "/ressources/ressource/rare/bronzite.png")
+manuscrit = Item("manuscrit", _BASE + "/ressources/ressource/rare/manuscrit.png")
+metaux = Item("métaux", _BASE + "/ressources/ressource/rare/metaux.png")
 
 # epic
-eclat_lune = Item("eclat de lune", "ressources/ressource/epic/eclat_lune.png")
-or_brute = Item("or brute", "ressources/ressource/epic/or_brute.png")
-emeraude = Item("emeraude", "ressources/ressource/epic/emeraude.png")
-obsidienne_brute = Item("obsidienne brute", "ressources/ressource/epic/obsidienne_brute.png")
-parchemin_epic = Item("parchemin epic", "ressources/ressource/epic/parchemin_epic.png")
-lingo_emeraude = Item("lingo emeraude", "ressources/ressource/epic/lingo_emeraude.png")
-lingo_or = Item("lingo or", "ressources/ressource/epic/lingo_or.png")
-pavot = Item("pavot", "ressources/ressource/epic/pavot.png")
-lingo_obsidienne = Item("lingo obsidienne", "ressources/ressource/epic/lingot_obsidienne.png")
-diamant_brute = Item("diamant brute", "ressources/ressource/epic/diamant_brute.png")
+eclat_lune = Item("eclat de lune", _BASE + "/ressources/ressource/epic/eclat_lune.png")
+or_brute = Item("or brute", _BASE + "/ressources/ressource/epic/or_brute.png")
+emeraude = Item("emeraude", _BASE + "/ressources/ressource/epic/emeraude.png")
+obsidienne_brute = Item("obsidienne brute", _BASE + "/ressources/ressource/epic/obsidienne_brute.png")
+parchemin_epic = Item("parchemin epic", _BASE + "/ressources/ressource/epic/parchemin_epic.png")
+lingo_emeraude = Item("lingo emeraude", _BASE + "/ressources/ressource/epic/lingo_emeraude.png")
+lingo_or = Item("lingo or", _BASE + "/ressources/ressource/epic/lingo_or.png")
+pavot = Item("pavot", _BASE + "/ressources/ressource/epic/pavot.png")
+lingo_obsidienne = Item("lingo obsidienne", _BASE + "/ressources/ressource/epic/lingot_obsidienne.png")
+diamant_brute = Item("diamant brute", _BASE + "/ressources/ressource/epic/diamant_brute.png")
 
-coeur_lune = Item("coeur de lune", "ressources/ressource/epic/coeur_lune.png")
+coeur_lune = Item("coeur de lune", _BASE + "/ressources/ressource/epic/coeur_lune.png")
 
 # legendaire
-diamant_pure = Item("diamant pur", "ressources/ressource/legendaire/diamant_pur.png")
-diamant_raffiner = Item("diamant raffiné", "ressources/ressource/legendaire/diamant_raffiner.png")
-pierre_volcanique = Item("pierre volcanique", "ressources/ressource/legendaire/pierre_volcanique.png")
-parchemin_legendaire = Item("parchemin legendaire", "ressources/ressource/legendaire/parchemin_legendaire.png")
-artefacte = Item("artefacte", "ressources/ressource/legendaire/artefacte.png")
-perle_nacre = Item("perle de nacre", "ressources/ressource/legendaire/perle_nacre.png")
-parchemin_dore = Item("parchemin doré", "ressources/ressource/legendaire/parchemin_dore.png")
-diamant = Item("diamant", "ressources/ressource/legendaire/diamant.png")
-tissue_precieux = Item("tissue précieux", "ressources/ressource/legendaire/tissue_precieux.png")
+diamant_pure = Item("diamant pur", _BASE + "/ressources/ressource/legendaire/diamant_pur.png")
+diamant_raffiner = Item("diamant raffiné", _BASE + "/ressources/ressource/legendaire/diamant_raffiner.png")
+pierre_volcanique = Item("pierre volcanique", _BASE + "/ressources/ressource/legendaire/pierre_volcanique.png")
+parchemin_legendaire = Item("parchemin legendaire", _BASE + "/ressources/ressource/legendaire/parchemin_legendaire.png")
+artefacte = Item("artefacte", _BASE + "/ressources/ressource/legendaire/artefacte.png")
+perle_nacre = Item("perle de nacre", _BASE + "/ressources/ressource/legendaire/perle_nacre.png")
+parchemin_dore = Item("parchemin doré", _BASE + "/ressources/ressource/legendaire/parchemin_dore.png")
+diamant = Item("diamant", _BASE + "/ressources/ressource/legendaire/diamant.png")
+tissue_precieux = Item("tissue précieux", _BASE + "/ressources/ressource/legendaire/tissue_precieux.png")
 
 # equipement ===================================================================
 
@@ -72,38 +72,38 @@ katana_t3 = None
 katana_t4 = None
 
 ## bague
-bague_t2 = Item("bague_t2", "ressources/ressource/equipement/bague_t2.png")
-bague_t4 = Item("bague_t4", "ressources/ressource/equipement/bague_t4.png")
+bague_t2 = Item("bague_t2", _BASE + "/ressources/ressource/equipement/bague_t2.png")
+bague_t4 = Item("bague_t4", _BASE + "/ressources/ressource/equipement/bague_t4.png")
 
 ## boucle
-boucle_t2 = Item("boucle_t2", "ressources/ressource/equipement/boucle_t2.png")
-boucle_t3 = Item("boucle_t3", "ressources/ressource/equipement/boucle_t3.png")
-boucle_t4 = Item("boucle_t4", "ressources/ressource/equipement/boucle_t4.png")
+boucle_t2 = Item("boucle_t2", _BASE + "/ressources/ressource/equipement/boucle_t2.png")
+boucle_t3 = Item("boucle_t3", _BASE + "/ressources/ressource/equipement/boucle_t3.png")
+boucle_t4 = Item("boucle_t4", _BASE + "/ressources/ressource/equipement/boucle_t4.png")
 
 ## bottes
-bottes_t2 = Item("bottes_t2", "ressources/ressource/equipement/botte_t2.png")
-bottes_t4 = Item("bottes_t4", "ressources/ressource/equipement/botte_t4.png")
+bottes_t2 = Item("bottes_t2", _BASE + "/ressources/ressource/equipement/botte_t2.png")
+bottes_t4 = Item("bottes_t4", _BASE + "/ressources/ressource/equipement/botte_t4.png")
 
 ## gant
-gant_t2 = Item("gant_t2", "ressources/ressource/equipement/gant_t2.png")
-gant_t4 = Item("gant_t4", "ressources/ressource/equipement/gant_t4.png")
+gant_t2 = Item("gant_t2", _BASE + "/ressources/ressource/equipement/gant_t2.png")
+gant_t4 = Item("gant_t4", _BASE + "/ressources/ressource/equipement/gant_t4.png")
 
 ## collier
-collier_t2 = Item("collier_t2", "ressources/ressource/equipement/collier_t2.png")
-collier_t3 = Item("collier_t3", "ressources/ressource/equipement/collier_t3.png")
-collier_t4 = Item("collier_t4", "ressources/ressource/equipement/collier_t4.png")
+collier_t2 = Item("collier_t2", _BASE + "/ressources/ressource/equipement/collier_t2.png")
+collier_t3 = Item("collier_t3", _BASE + "/ressources/ressource/equipement/collier_t3.png")
+collier_t4 = Item("collier_t4", _BASE + "/ressources/ressource/equipement/collier_t4.png")
 
 ## pantalon
-pantalon_hp_t3 = Item("pantalon_hp_t3", "ressources/ressource/equipement/pantalon_hp_t3.png")
-pantalon_jutsu_t4 = Item("pantalon_jutsu_t4", "ressources/ressource/equipement/pantalon_jutsu_t4.png")
-# patalon_armure_t3 = Item("patalon_armure_t3", "ressources/ressource/equipement/pantalon_armure_t3.png")
-pantalon_armure_t4 = Item("pantalon_armure_t4", "ressources/ressource/equipement/pantalon_armure_t4.png")
+pantalon_hp_t3 = Item("pantalon_hp_t3", _BASE + "/ressources/ressource/equipement/pantalon_hp_t3.png")
+pantalon_jutsu_t4 = Item("pantalon_jutsu_t4", _BASE + "/ressources/ressource/equipement/pantalon_jutsu_t4.png")
+# patalon_armure_t3 = Item("patalon_armure_t3", _BASE + "/ressources/ressource/equipement/pantalon_armure_t3.png")
+pantalon_armure_t4 = Item("pantalon_armure_t4", _BASE + "/ressources/ressource/equipement/pantalon_armure_t4.png")
 
 ## torse
-torse_hp_t3 = Item("torse_hp_t3", "ressources/ressource/equipement/torse_hp_t3.png")
-torse_armure_t4 = Item("torse_armure_t4", "ressources/ressource/equipement/torse_armure_t4.png")
-# torse_jutsu_t4 = Item("torse_jutsu_t4", "ressources/ressource/equipement/torse_jutsu_t4.png")
-torse_armure_t4 = Item("torse_armure_t4", "ressources/ressource/equipement/torse_armure_t4.png")
+torse_hp_t3 = Item("torse_hp_t3", _BASE + "/ressources/ressource/equipement/torse_hp_t3.png")
+torse_armure_t4 = Item("torse_armure_t4", _BASE + "/ressources/ressource/equipement/torse_armure_t4.png")
+# torse_jutsu_t4 = Item("torse_jutsu_t4", _BASE + "/ressources/ressource/equipement/torse_jutsu_t4.png")
+torse_armure_t4 = Item("torse_armure_t4", _BASE + "/ressources/ressource/equipement/torse_armure_t4.png")
 
 # recette ======================================================================
 
