@@ -21,7 +21,15 @@ testdata = [
   (ficelle, 1803),
   (pomme, 1304),
   (pavot, 62),
-  (lingo_obsidienne, 21)
+  (lingo_obsidienne, 21),
+  (emeraude, 3105),
+  (lingo_emeraude, 5),
+  (laine, 38),
+  (parchemin_epic, 575),
+  (perle_nacre, 136),
+  (boucle_t3, 15),
+  (artefacte, 855),
+  (diamant, 634),
 ]
 
 @pytest.mark.parametrize("template, number", testdata)
