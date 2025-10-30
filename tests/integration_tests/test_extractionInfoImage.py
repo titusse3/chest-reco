@@ -1,13 +1,9 @@
 from imgExtraction.imgExtraction import item_extractor, number_extractor
 from numberReco.numberReco import number_ocr
-from util.util import img_resize
 from inv_gestion.recette import *
-import math
 
 from pathlib import Path
 import pytest
-
-import cv2
 
 _BASE = str(Path(__file__).parent.resolve())
 
