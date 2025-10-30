@@ -1,4 +1,7 @@
+from util.util import img_resize
+
 import easyocr
+import math
 
 def correct_ocr_errors(text):
   corrections = {
@@ -20,6 +23,10 @@ def number_ocr(image_path):
   if len(resultats) >= 1 :
     num = resultats[0]
   else:
-    return None
+    image_resize = img_resize(image_path, math.sqrt(2))
+    resultats = reader.readtext(image_resize, detail=0)
+    num = resultats[0] if len(resultats) >= 1 else None
 
+  if num is None:
+    return None
   return correct_ocr_errors(num)

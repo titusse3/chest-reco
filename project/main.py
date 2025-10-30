@@ -3,7 +3,7 @@ from inv_gestion.recette import items, equipements
 from imgExtraction.imgExtraction import item_extractor, number_extractor
 from numberReco.numberReco import number_ocr
 from inv_gestion.inventaire import Inventaire
-from util.util import get_closest_file, img_resize, flatten, preprocess_image
+from util.util import get_closest_file, flatten, preprocess_image
 
 import argparse
 from multiprocessing import Pool
@@ -27,18 +27,16 @@ inventaire sauvegardé dans le dossier des logs.
 
 def get_number_from_image(image) -> int | None:
   number_img = number_extractor(image, X_IMG)
-  if number_img is not None:
-    n = number_ocr(number_img)
-    if n is None:
-      n = number_ocr(img_resize(number_img, math.sqrt(2)))
-    if n is None:
-      print(f"Échec de la reconnaissance du nombre pour l'image {image}.")
-      return None
-    if not n.isdigit():
-      print(f"Nombre reconnu non valide '{n}' pour l'image {image}.")
-      return None
-    return int(n)
-  return 1
+  if number_img is None:
+    return 1
+  n = number_ocr(number_img)
+  if n is None:
+    print(f"Échec de la reconnaissance du nombre pour l'image {image}.")
+    return None
+  if not n.isdigit():
+    print(f"Nombre reconnu non valide '{n}' pour l'image {image}.")
+    return None
+  return int(n)
 
 def get_items_from_img(coffre_path : str, img : str):
   path = os.path.join(coffre_path, img)

@@ -15,6 +15,7 @@ testdata = [
   (_BASE + "/numberTest/7.png", "643"),
   (_BASE + "/numberTest/8.png", "15469"),
   (_BASE + "/numberTest/9.png", "5"),
+  (_BASE + "/numberTest/10.png", "7"),
 ]
 
 @pytest.mark.parametrize("img_path,expected", testdata)
