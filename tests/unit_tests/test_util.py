@@ -1,4 +1,4 @@
-from util.util import get_closest_file, flatten, preprocess_image
+from util.util import flatten
 
 def test_flatten_empty_is_empty():
   assert flatten([]) == []

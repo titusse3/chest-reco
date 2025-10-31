@@ -3,7 +3,7 @@ from inv_gestion.recette import items, equipements
 from imgExtraction.imgExtraction import item_extractor, number_extractor
 from numberReco.numberReco import number_ocr
 from inv_gestion.inventaire import Inventaire
-from util.util import get_closest_file, flatten, preprocess_image
+from util.util import flatten, preprocess_image
 
 import argparse
 from multiprocessing import Pool
@@ -17,10 +17,6 @@ Solve.
 """
 PATH_DESC = """
 Chemin vers le dossier contenant les images du coffre à analyser.
-"""
-DIFFERENCE_DESC = """
-Option qui permet d'afficher les ajouts et retraits par rapport au dernier
-inventaire sauvegardé dans le dossier des logs.
 """
 
 def get_number_from_image(image) -> int | None:
@@ -51,15 +47,8 @@ def get_items_from_img(coffre_path : str, img : str):
 def main():
   parser = argparse.ArgumentParser(description=DESC_PROG)
   parser.add_argument('filename', type=str, help=PATH_DESC)
-  parser.add_argument('-d', '--diff', action='store_true', help=DIFFERENCE_DESC)
   arg = parser.parse_args()
   coffre_path = arg.filename
-
-  old_path = get_closest_file(LOGS_FOLDER)
-  if old_path is None:
-    print("Aucun fichier de log trouvé.")
-    exit(1)
-  old_inv = Inventaire.load_inventory(old_path)
   
   files = preprocess_image(coffre_path)
 
@@ -72,8 +61,6 @@ def main():
 
   inv = Inventaire(all_items)
   print(inv, end="\n")
-  if arg.diff:
-    inv.show_difference(old_inv)
 
 if __name__ == "__main__":
   main()

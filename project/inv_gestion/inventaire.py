@@ -28,42 +28,6 @@ class Inventaire:
       print(f"• {nom}: \033[1;32m{quantite}\033[0m")
     print()
 
-  def difference(self, other : "Inventaire") -> tuple[dict, dict]:
-    """
-    Compare l'inventaire actuel avec un autre inventaire.
-    Retourne deux dictionnaires:
-    - Le premier dictionnaire contient les articles ajoutés.
-    - Le deuxième dictionnaire contient les articles retirés.
-    """
-
-    added = {}
-    removed = {}
-    all_items = set(self.stock.keys()).union(other.stock.keys())
-    for item in all_items:
-      self_qty = self.stock.get(item, 0)
-      other_qty = other.stock.get(item, 0)
-      if other_qty > self_qty:
-        added[item] = other_qty - self_qty
-      elif other_qty < self_qty:
-        removed[item] = self_qty - other_qty
-    return added, removed
-
-  def show_difference(self, other : "Inventaire"):
-    added, removed = self.difference(other)
-    print("\033[1;34mAjouts:\033[0m")
-    if added:
-      for nom, quantite in added.items():
-        print(f"• {nom}: \033[1;32m+{quantite}\033[0m ({self.stock.get(nom, 0)})")
-    else:
-      print("\033[1;33mAucun ajout.\033[0m")
-
-    print("\033[1;34mRetraits:\033[0m")
-    if removed:
-      for nom, quantite in removed.items():
-        print(f"• {nom}: \033[1;31m-{quantite}\033[0m ({self.stock.get(nom, 0)})")
-    else:
-      print("\033[1;33mAucun retrait.\033[0m")
-
   def __str__(self):
     s = ""
     for nom, quantite in self.stock.items():

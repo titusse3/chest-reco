@@ -34,34 +34,6 @@ def test_display_nempty_inv(capsys):
   assert "carrote" in captured.out
   assert "2" in captured.out  
 
-def test_empty_difference_empty_inv():
-  i1 = Inventaire()
-  i2 = Inventaire()
-  added, removed = i1.difference(i2)
-  assert added == {}, "Aucun ajout attendu"
-  assert removed == {}, "Aucun retrait attendu"
-
-def test_empty_difference_nempty_inv():
-  i1 = Inventaire([("pomme", 4), ("carrote", 2)])
-  i2 = Inventaire([("pomme", 4), ("carrote", 2)])
-  added, removed = i1.difference(i2)
-  assert added == {}
-  assert removed == {}
-
-def test_nempty_difference_added():
-  i1 = Inventaire([("pomme", 4), ("carrote", 2)])
-  i2 = Inventaire([("pomme", 6), ("carrote", 2), ("banane", 3)])
-  added, removed = i1.difference(i2)
-  assert added == {"pomme": 2, "banane": 3}, "Ajouts incorrects"
-  assert removed == {}, "Aucun retrait attendu"
-
-def test_nempty_difference_removed():
-  i1 = Inventaire([("pomme", 4), ("carrote", 2), ("banane", 3)])
-  i2 = Inventaire([("pomme", 2), ("carrote", 2)])
-  added, removed = i1.difference(i2)
-  assert added == {}, "Aucun ajout attendu"
-  assert removed == {"pomme": 2, "banane": 3}, "Retraits incorrects"
-
 def test_save_inventory(tmp_path):
   l = [("pomme", 4), ("carrote", 2)]
   i = Inventaire(l)
