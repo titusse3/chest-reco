@@ -2,8 +2,6 @@ from inv_gestion.item import Item, Recette
 
 from pathlib import Path
 
-#### coeur_lune
-
 _BASE = str(Path(__file__).parent.parent.resolve())
 
 # commun
@@ -51,7 +49,6 @@ lingo_or = Item("lingo or", _BASE + "/ressources/ressource/epic/lingo_or.png")
 pavot = Item("pavot", _BASE + "/ressources/ressource/epic/pavot.png")
 lingo_obsidienne = Item("lingo obsidienne", _BASE + "/ressources/ressource/epic/lingot_obsidienne.png")
 diamant_brute = Item("diamant brute", _BASE + "/ressources/ressource/epic/diamant_brute.png")
-
 coeur_lune = Item("coeur de lune", _BASE + "/ressources/ressource/epic/coeur_lune.png")
 
 # legendaire
@@ -164,7 +161,7 @@ items = [
   eclat_lune, or_brute, emeraude, obsidienne_brute, parchemin_epic,
   lingo_emeraude, pavot, lingo_obsidienne, diamant_brute, diamant_pure, diamant_raffiner,
   pierre_volcanique, parchemin_legendaire, artefacte, perle_nacre,
-  parchemin_dore, diamant, tissue_precieux, lingot_or
+  parchemin_dore, diamant, tissue_precieux, lingot_or, coeur_lune
 ]
 
 equipements = [
