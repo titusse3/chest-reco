@@ -60,7 +60,7 @@ def main():
     all_items = list(set(item_qt))
 
   inv = Inventaire(all_items)
-  print(inv, end="\n")
+  print(inv)
 
 if __name__ == "__main__":
   main()
