@@ -54,3 +54,10 @@ pip install -r requirements.txt
 ```
 python main.py <chemin-vers-le-dossier>
 ```
+
+## Lancement des testes
+
+```
+cd tests
+pytest
+```
