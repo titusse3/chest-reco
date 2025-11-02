@@ -1,0 +1,16 @@
+[project]
+name = "chest-reco_renauxv"
+version = "0.0.1"
+authors = [
+  { name="renauxv", email="contact@renauxv.fr" },
+]
+description = "A chest reader for naruto RP chest."
+readme = "Readme.md"
+requires-python = ">=3.9"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/titusse3/chest-reco"
